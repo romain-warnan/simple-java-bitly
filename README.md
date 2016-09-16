@@ -35,8 +35,7 @@ String shortUrl = Bitly
 
 Either:
 ```
-Bitly
-	.of(access_token)
+Bitly.of(access_token)
 	.proxyUri("http://proxy.host.com:port")
 	.bitly()
 	.shorten(longUrl);
@@ -44,8 +43,7 @@ Bitly
 
 Or:
 ```
-Bitly
-	.of(access_token)
+Bitly.of(access_token)
 	.proxyUri("http://proxy.host.com:port")
 	.proxyUsername("username")
 	.proxyPassword("password")
