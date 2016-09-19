@@ -23,9 +23,13 @@ import org.glassfish.jersey.client.ClientProperties;
  * String shortUrl = Bitly.of(access_token)
  *	.bitly()
  *	.shorten("https://github.com/romain-warnan/simple-java-bitly");
- * </pre></code>
+ * </code>
+ * </pre>
+ * 
  * Example with proxy:
- * <code><pre>
+ * 
+ * <pre>
+ * <code>
  * String shortUrl = Bitly.of(access_token)
  * 	.proxyUri("http://proxy.host.com:port")
  * 	.proxyUsername("username")
