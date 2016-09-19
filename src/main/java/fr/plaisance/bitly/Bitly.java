@@ -17,7 +17,9 @@ import org.glassfish.jersey.client.ClientProperties;
  * <p>
  * Simple example:
  * </p>
- * <code><pre>
+ * 
+ * <pre>
+ * <code>
  * String shortUrl = Bitly.of(access_token)
  *	.bitly()
  *	.shorten("https://github.com/romain-warnan/simple-java-bitly");
@@ -30,7 +32,8 @@ import org.glassfish.jersey.client.ClientProperties;
  * 	.proxyPassword("password")
  * 	.bitly()
  *	.shorten(longUrl);
- * </pre></code>
+ * </code>
+ * </pre>
  * 
  * @author Romain Warnan – romain.warnan@gmail.com
  */
