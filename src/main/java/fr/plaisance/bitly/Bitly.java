@@ -46,13 +46,14 @@ public class Bitly {
 	private String access_token;
 	private String proxyUri, proxyUsername, proxyPassword;
 
-	private Bitly(String access_token) {
+	Bitly(String access_token) {
 		this.access_token = access_token;
 	}
 
 	/**
 	 * Static method providing a builder.
 	 * 
+	 * @deprecated Since 1.1, use {@link Bit#ly(String)} instead.
 	 * @param access_token – The secret token that you can have <a href="https://bitly.com/a/oauth_apps">here</a>, if you have a Bitly account.
 	 * @return A builder that provide a Bitly instance when you call the {@link BitlyBuilder#bitly()} method.
 	 */
