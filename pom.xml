@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.romain-warnan</groupId>
 	<artifactId>simple-java-bitly</artifactId>
-	<version>1.0</version>
+	<version>1.1</version>
 	<name>simple-java-bitly</name>
 	<description>Very simple URL shortener for Java based on Bitly</description>
 	<url>https://github.com/romain-warnan/simple-java-bitly</url>

@@ -56,6 +56,7 @@ public class Bitly {
 	 * @param access_token – The secret token that you can have <a href="https://bitly.com/a/oauth_apps">here</a>, if you have a Bitly account.
 	 * @return A builder that provide a Bitly instance when you call the {@link BitlyBuilder#bitly()} method.
 	 */
+	@Deprecated
 	public static BitlyBuilder of(String access_token) {
 		return new BitlyBuilder(access_token);
 	}
@@ -136,6 +137,39 @@ public class Bitly {
 			// Nothing, UTF-8 is ok.
 		}
 		return url;
+	}
+
+	/**
+	 * Add a proxy to the Bitly instance.
+	 * 
+	 * @param proxyUri – Proxy URI like that: <code>http://proxy.host.com:port</code>
+	 * @return The object itself.
+	 */
+	public Bitly proxyUri(String proxyUri) {
+		this.proxyUri = proxyUri;
+		return this;
+	}
+
+	/**
+	 * Specify a username for the proxy.
+	 * 
+	 * @param proxyUsername – Set a username for the proxy.
+	 * @return The object itself.
+	 */
+	public Bitly proxyUsername(String proxyUsername) {
+		this.proxyUsername = proxyUsername;
+		return this;
+	}
+
+	/**
+	 * Specify a password for the proxy.
+	 * 
+	 * @param proxyPassword – Set a password for the proxy.
+	 * @return The object itself.
+	 */
+	public Bitly proxyPassword(String proxyPassword) {
+		this.proxyPassword = proxyPassword;
+		return this;
 	}
 
 	/**
