@@ -1,10 +1,10 @@
-# Simple java client for Bitly
+# Simple java client for Bit.ly
 
-A very simple URL shortener and expander for Java using Bitly API.
+A very simple URL shortener and expander for Java using Bit.ly API.
 
 ## Prerequisite
 
-* You need to have an account on bitly. If you don't, you can create an account [here](https://bitly.com/a/sign_up).
+* You need to have an account on *bitly.com*. If you don't, you can create an account [here](https://bitly.com/a/sign_up).
 
 * Then you need to generate a access token [there](https://bitly.com/a/oauth_apps). You will need this token to use this lib. 
 
