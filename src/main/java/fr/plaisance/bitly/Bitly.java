@@ -20,7 +20,7 @@ import org.glassfish.jersey.client.ClientProperties;
  * 
  * <pre>
  * <code>
- * String shortUrl = Bitly.of(access_token)
+ * String shortUrl = Bit.ly(access_token)
  *	.bitly()
  *	.shorten("https://github.com/romain-warnan/simple-java-bitly");
  * </code>
@@ -30,7 +30,7 @@ import org.glassfish.jersey.client.ClientProperties;
  * 
  * <pre>
  * <code>
- * String shortUrl = Bitly.of(access_token)
+ * String shortUrl = Bit.ly(access_token)
  * 	.proxyUri("http://proxy.host.com:port")
  * 	.proxyUsername("username")
  * 	.proxyPassword("password")
@@ -39,7 +39,7 @@ import org.glassfish.jersey.client.ClientProperties;
  * </code>
  * </pre>
  * 
- * @author Romain Warnan – romain.warnan@gmail.com
+ * @author Romain Warnan - romain.warnan@gmail.com
  */
 public class Bitly {
 
@@ -54,7 +54,7 @@ public class Bitly {
 	 * Static method providing a builder.
 	 * 
 	 * @deprecated Since 1.1, use {@link Bit#ly(String)} instead.
-	 * @param access_token – The secret token that you can have <a href="https://bitly.com/a/oauth_apps">here</a>, if you have a Bitly account.
+	 * @param access_token The secret token that you can have <a href="https://bitly.com/a/oauth_apps">here</a>, if you have a Bitly account.
 	 * @return A builder that provide a Bitly instance when you call the {@link BitlyBuilder#bitly()} method.
 	 */
 	@Deprecated
@@ -70,7 +70,7 @@ public class Bitly {
 	 * The <code>longUrl</code> does not have to be encoded: the method will url-encode it before shortening it.
 	 * </p>
 	 * 
-	 * @param longUrl – The long URL that needs to be shorten by Bitly.
+	 * @param longUrl The long URL that needs to be shorten by Bitly.
 	 * @return The shorten URL.
 	 */
 	public String shorten(String longUrl) {
@@ -83,7 +83,7 @@ public class Bitly {
 	 * Expand the given URL. The expanding is made by Bitly.
 	 * </p>
 	 * 
-	 * @param shortUrl – The shorten URL that needs to be expanded by Bitly.
+	 * @param shortUrl The shorten URL that needs to be expanded by Bitly.
 	 * @return The expanded URL.
 	 */
 	public String expand(String shortUrl) {
@@ -143,7 +143,7 @@ public class Bitly {
 	/**
 	 * Add a proxy to the Bitly instance.
 	 * 
-	 * @param proxyUri – Proxy URI like that: <code>http://proxy.host.com:port</code>
+	 * @param proxyUri Proxy URI like that: <code>http://proxy.host.com:port</code>
 	 * @return The object itself.
 	 */
 	public Bitly proxyUri(String proxyUri) {
@@ -154,7 +154,7 @@ public class Bitly {
 	/**
 	 * Specify a username for the proxy.
 	 * 
-	 * @param proxyUsername – Set a username for the proxy.
+	 * @param proxyUsername Set a username for the proxy.
 	 * @return The object itself.
 	 */
 	public Bitly proxyUsername(String proxyUsername) {
@@ -165,7 +165,7 @@ public class Bitly {
 	/**
 	 * Specify a password for the proxy.
 	 * 
-	 * @param proxyPassword – Set a password for the proxy.
+	 * @param proxyPassword Set a password for the proxy.
 	 * @return The object itself.
 	 */
 	public Bitly proxyPassword(String proxyPassword) {
@@ -179,6 +179,7 @@ public class Bitly {
 	 * 
 	 * @author Romain Warnan
 	 */
+	@Deprecated
 	public static class BitlyBuilder {
 
 		private String access_token;
@@ -191,7 +192,7 @@ public class Bitly {
 		/**
 		 * Add a proxy to the Bitly instance.
 		 * 
-		 * @param proxyUri – Proxy URI like that: <code>http://proxy.host.com:port</code>
+		 * @param proxyUri Proxy URI like that: <code>http://proxy.host.com:port</code>
 		 * @return The builder itself.
 		 */
 		public BitlyBuilder proxyUri(String proxyUri) {
@@ -202,7 +203,7 @@ public class Bitly {
 		/**
 		 * Specify a username for the proxy.
 		 * 
-		 * @param proxyUsername – Set a username for the proxy.
+		 * @param proxyUsername Set a username for the proxy.
 		 * @return The builder itself.
 		 */
 		public BitlyBuilder proxyUsername(String proxyUsername) {
@@ -213,7 +214,7 @@ public class Bitly {
 		/**
 		 * Specify a password for the proxy.
 		 * 
-		 * @param proxyPassword – Set a password for the proxy.
+		 * @param proxyPassword Set a password for the proxy.
 		 * @return The builder itself.
 		 */
 		public BitlyBuilder proxyPassword(String proxyPassword) {
@@ -226,6 +227,7 @@ public class Bitly {
 		 * 
 		 * @return A new Bitly instance.
 		 */
+		@Deprecated
 		public Bitly bitly() {
 			Bitly bitly = new Bitly(this.access_token);
 			bitly.proxyUri = this.proxyUri;

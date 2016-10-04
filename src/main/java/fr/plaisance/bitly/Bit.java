@@ -10,6 +10,9 @@ import org.glassfish.jersey.apache.connector.ApacheConnectorProvider;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.ClientProperties;
 
+import fr.plaisance.bitly.Bitly.BitlyBuilder;
+import fr.plaisance.utils.Strings;
+
 /**
  * <p>
  * Entry point of the lib..
@@ -38,7 +41,7 @@ import org.glassfish.jersey.client.ClientProperties;
  * </pre>
  * 
  * @since 1.1
- * @author Romain Warnan – romain.warnan@gmail.com
+ * @author Romain Warnan romain.warnan@gmail.com
  */
 public class Bit {
 
@@ -53,7 +56,7 @@ public class Bit {
 	 * Static method providing a {@link Bitly} instance.
 	 * 
 	 * @since 1.1, instead of {@link Bitly#of(String)}.
-	 * @param access_token – The secret token that you can have <a href="https://bitly.com/a/oauth_apps">here</a>, if you have a Bitly account.
+	 * @param access_token The secret token that you can have <a href="https://bitly.com/a/oauth_apps">here</a>, if you have a Bitly account.
 	 * @return A builder that provide a Bitly instance when you call the {@link BitlyBuilder#bitly()} method.
 	 */
 	public static Bitly ly(String access_token) {
@@ -68,7 +71,7 @@ public class Bit {
 	 * The <code>longUrl</code> does not have to be encoded: the method will url-encode it before shortening it.
 	 * </p>
 	 * 
-	 * @param longUrl – The long URL that needs to be shorten by Bitly.
+	 * @param longUrl The long URL that needs to be shorten by Bitly.
 	 * @return The shorten URL.
 	 */
 	public String shorten(String longUrl) {
@@ -81,7 +84,7 @@ public class Bit {
 	 * Expand the given URL. The expanding is made by Bitly.
 	 * </p>
 	 * 
-	 * @param shortUrl – The shorten URL that needs to be expanded by Bitly.
+	 * @param shortUrl The shorten URL that needs to be expanded by Bitly.
 	 * @return The expanded URL.
 	 */
 	public String expand(String shortUrl) {
@@ -90,7 +93,7 @@ public class Bit {
 	}
 
 	private String shorten(String access_token, String longUrl) {
-		return ClientBuilder
+		String url = ClientBuilder
 			.newClient(clientConfig())
 			.target("https://api-ssl.bitly.com")
 			.path("v3")
@@ -100,10 +103,11 @@ public class Bit {
 			.queryParam("format", "txt")
 			.request(MediaType.TEXT_PLAIN)
 			.get(String.class);
+		return Strings.chomp(url);
 	}
 
 	private String expand(String access_token, String shortUrl) {
-		return ClientBuilder
+		String url = ClientBuilder
 			.newClient(clientConfig())
 			.target("https://api-ssl.bitly.com")
 			.path("v3")
@@ -113,6 +117,8 @@ public class Bit {
 			.queryParam("format", "txt")
 			.request(MediaType.TEXT_PLAIN)
 			.get(String.class);
+		return Strings.chomp(url);
+
 	}
 
 	private ClientConfig clientConfig() {
@@ -136,67 +142,5 @@ public class Bit {
 			// Nothing, UTF-8 is ok.
 		}
 		return url;
-	}
-
-	/**
-	 * Builder for Bitly objects.
-	 * The {@link BitlyBuilder#bitly()} method returns an instance of {@link Bit}.
-	 * 
-	 * @author Romain Warnan
-	 */
-	public static class BitlyBuilder {
-
-		private String access_token;
-		private String proxyUri, proxyUsername, proxyPassword;
-
-		private BitlyBuilder(String access_token) {
-			this.access_token = access_token;
-		}
-
-		/**
-		 * Add a proxy to the Bitly instance.
-		 * 
-		 * @param proxyUri – Proxy URI like that: <code>http://proxy.host.com:port</code>
-		 * @return The builder itself.
-		 */
-		public BitlyBuilder proxyUri(String proxyUri) {
-			this.proxyUri = proxyUri;
-			return this;
-		}
-
-		/**
-		 * Specify a username for the proxy.
-		 * 
-		 * @param proxyUsername – Set a username for the proxy.
-		 * @return The builder itself.
-		 */
-		public BitlyBuilder proxyUsername(String proxyUsername) {
-			this.proxyUsername = proxyUsername;
-			return this;
-		}
-
-		/**
-		 * Specify a password for the proxy.
-		 * 
-		 * @param proxyPassword – Set a password for the proxy.
-		 * @return The builder itself.
-		 */
-		public BitlyBuilder proxyPassword(String proxyPassword) {
-			this.proxyPassword = proxyPassword;
-			return this;
-		}
-
-		/**
-		 * This method returns a new Bitly instance.
-		 * 
-		 * @return A new Bitly instance.
-		 */
-		public Bit bitly() {
-			Bit bitly = new Bit(this.access_token);
-			bitly.proxyUri = this.proxyUri;
-			bitly.proxyUsername = this.proxyUsername;
-			bitly.proxyPassword = this.proxyPassword;
-			return bitly;
-		}
 	}
 }
