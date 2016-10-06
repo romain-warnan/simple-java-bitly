@@ -10,6 +10,8 @@ import org.glassfish.jersey.apache.connector.ApacheConnectorProvider;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.ClientProperties;
 
+import fr.plaisance.utils.Strings;
+
 /**
  * <p>
  * Main class of the lib. Once you have an instance of this class, you can call the {@link #shorten(String)} and {@link #expand(String)} methods.
@@ -75,7 +77,7 @@ public class Bitly {
 	 */
 	public String shorten(String longUrl) {
 		String encodedUrl = this.encode(longUrl);
-		return this.shorten(this.access_token, encodedUrl);
+		return Strings.deleteLastChar(this.shorten(this.access_token, encodedUrl));
 	}
 
 	/**
@@ -88,7 +90,7 @@ public class Bitly {
 	 */
 	public String expand(String shortUrl) {
 		String encodedUrl = this.encode(shortUrl);
-		return this.expand(this.access_token, encodedUrl);
+		return Strings.deleteLastChar(this.expand(this.access_token, encodedUrl));
 	}
 
 	private String shorten(String access_token, String longUrl) {
