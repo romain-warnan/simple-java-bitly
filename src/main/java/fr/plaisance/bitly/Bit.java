@@ -32,6 +32,7 @@ import fr.plaisance.bitly.Bitly.BitlyBuilder;
  * @since 1.1
  * @author Romain Warnan romain.warnan@gmail.com
  */
+@SuppressWarnings("deprecation")
 public class Bit {
 
 	/**

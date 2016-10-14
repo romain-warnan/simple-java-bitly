@@ -8,6 +8,18 @@ A very simple URL shortener and expander for Java using Bit.ly API.
 
 * Then you need to generate a access token [there](https://bitly.com/a/oauth_apps). You will need this token to use this lib. 
 
+## Installation with Maven
+
+> pom.xml
+
+```xml
+<dependency>
+	<groupId>com.github.romain-warnan</groupId>
+	<artifactId>simple-java-bitly</artifactId>
+	<version>1.1</version>
+</dependency>
+```
+
 ## Usage
 
 You need the access token to get an instance of Bitly object.
