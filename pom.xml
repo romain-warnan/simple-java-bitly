@@ -5,7 +5,7 @@
 	<artifactId>simple-java-bitly</artifactId>
 	<version>1.1</version>
 	<name>simple-java-bitly</name>
-	<description>Very simple URL shortener for Java based on Bitly</description>
+	<description>Very simple URL shortener for Java based on Bit.ly</description>
 	<url>https://github.com/romain-warnan/simple-java-bitly</url>
 	<licenses>
 		<license>
